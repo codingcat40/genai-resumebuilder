@@ -10,7 +10,7 @@ async function registerUserController(req, res) {
   }
 
   const isUserExisting = await userModel.findOne({
-    $or: [email, username],
+    $or: [{email}, {username}],
   });
 
   if (isUserExisting) {
@@ -83,4 +83,4 @@ async function loginUserController(req, res) {
   });
 }
 
-module.exports = registerUserController;
+module.exports = {registerUserController, loginUserController};
